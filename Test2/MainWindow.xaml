@@ -1,0 +1,86 @@
+﻿<Controls:MetroWindow x:Class="ThompsonsMathGrapher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"     
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        
+        MinHeight="600" 
+        MinWidth="950"
+        WindowTitleBrush="#1A486E"
+        GlowBrush="Black"
+        Background="DarkGray"              
+        Title="Mr Thompsons Math Grapher" 
+        Height="696.5"
+        Width="1112">
+
+    <Grid Margin="0,0,2,0" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" x:Name="col2"/>
+            <ColumnDefinition Width="0" x:Name="col3"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Background="SkyBlue" Grid.Column="0" Grid.Row="0">
+            <Menu DockPanel.Dock="Top" Margin="0,0,0,0" Background="SkyBlue">
+                <MenuItem Header="_File" Background="SkyBlue" FontFamily="Verdana">
+                    <MenuItem x:Name="OpenFile" Header="_Open" Click="OpenFile_Click"/>
+                    <MenuItem x:Name="ClearGraphs" Header="Clear Canvas" Click="ClearGraphs_Click"/>
+                    <MenuItem x:Name="CopyToClipBoard" Header="_Copy to Clipboard" Click="CopyGraphsToClipBoard_Click"/>
+                    <MenuItem x:Name="GraphProgram" Header="Graph Program" Click="GraphProgram_Click"/>
+                    <MenuItem x:Name="SaveImage" Header="Save Image" Click="SameImageButton_Click"/>
+                    <Separator />
+                    <MenuItem x:Name="ClearMenuItem" Header="Restart Program" Click="RestartButton_Click" />
+                    <Separator />
+                    <MenuItem x:Name="ExitProgram" Header="_Close" Click="ExitProgram_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <Grid x:Name="GraphProg" Background="SkyBlue" Grid.Row="1" Grid.Column="0" Panel.ZIndex="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="DrawGraphButton" Content="Draw Graph" HorizontalAlignment="Left" Margin="5,341,0,0" VerticalAlignment="Top" Width="93" Click="DrawGraphButton_Click" RenderTransformOrigin="0.403,2.62"/>
+            <Button x:Name="ViewDataButton" Content="View Data" HorizontalAlignment="Left" Margin="5,299,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.227,0.053" Click="viewDataButton_Click"/>
+            <ListBox x:Name="GroupResultsListbox" HorizontalAlignment="Left" SelectionMode="Multiple" Height="275" Background="White" Margin="5,19,0,0" VerticalAlignment="Top" Width="86"/>
+            <Button x:Name="AutoGenerateButton" Content="AutoGenerate" HorizontalAlignment="Left" Margin="97,590,0,0" VerticalAlignment="Top" Width="93" Click="AutoGenerateButton_Click"/>
+            <ListBox x:Name="GroupByListBox" HorizontalAlignment="Left" SelectionMode="Multiple" Height="275" Margin="101,19,0,0" VerticalAlignment="Top" Width="89"/>
+            <Label x:Name="label1" Content="Group Results:" HorizontalAlignment="Left" Margin="5,-7,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label2" Content="By" HorizontalAlignment="Left" Margin="101,-7,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="ViewGraphButton" Content="View Graph" HorizontalAlignment="Left" Margin="101,299,0,0" VerticalAlignment="Top" Width="89" Click="ViewGraphButton_Click"/>
+            <Label x:Name="label" Content="Width:" HorizontalAlignment="Left" Margin="10,371,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="WidthOfBarsComboBox" HorizontalAlignment="Left" Margin="55,371,0,0" VerticalAlignment="Top" Width="120">
+                <ComboBoxItem Name="wiidth1">15</ComboBoxItem>
+                <ComboBoxItem Name="wiidth2">20</ComboBoxItem>
+                <ComboBoxItem Name="wiidth3">25</ComboBoxItem>
+                <ComboBoxItem Name="wiidth4">30</ComboBoxItem>
+                <ComboBoxItem Name="wiidth5">35</ComboBoxItem>
+                <ComboBoxItem Name="wiidth6">40</ComboBoxItem>
+            </ComboBox>
+
+            <Label Content="Exclude ALP bands" Margin="50,299,0,120" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <CheckBox x:Name="ExcludeSelectionCheckBox" Margin="5,299,0,120" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+            <Button x:Name="All1BandButton" Click="All1BandButton_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,299,0,90" Content="One Band" Width="100"></Button>
+            <Button x:Name="All2BandButton" Click="All2BandButton_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,299,0, 60" Content="Two Band" Width="100"></Button>
+            <Button x:Name="All3BandButton" Click="All3BandButton_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,299,0,30" Content="Three Band" Width="100"></Button>
+        </Grid>
+
+        <Grid x:Name="grid1" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="0">
+            <WindowsFormsHost x:Name="WinFormHost" Panel.ZIndex="0" >
+                <wf:ListView x:Name="ListView1" Margin="0,0,0,0" GridLines="True" MultiSelect="True" FullRowSelect="True"/>
+            </WindowsFormsHost>
+        </Grid>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" VerticalScrollBarVisibility="Disabled">
+            <Canvas x:Name="GraphCanvas" Width="Auto" Margin="0,0,0,0" Background="White" />
+        </ScrollViewer>
+    </Grid>
+
+
+</Controls:MetroWindow>
+    
